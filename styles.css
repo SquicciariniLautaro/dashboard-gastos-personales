@@ -1,0 +1,230 @@
+/* CONFIGURACIÓN GENERAL DE LA PANTALLA */
+body {
+    /* El body ordena uno al lado del otro */
+    display: flex; 
+    
+    /* 100vh significa "100% de la altura de la ventana visible" (Viewport Height).
+       Así nos aseguramos de que la barra lateral llegue hasta el fondo siempre */
+    min-height: 100vh; 
+    
+    /* Los navegadores le ponen un margen invisible por defecto al body, lo sacamos */
+    margin: 0; 
+    
+    /* Una fuente más moderna, sin los adornos de las letras (sans-serif) */
+    font-family: Arial, sans-serif; 
+}
+
+/* LA BARRA LATERAL */
+#barra-lateral {
+    /* Le damos un ancho fijo para que no se achique */
+    width: 250px; 
+    
+    /* Un color de fondo */
+    background-color: #2c3e50; 
+    
+    /* Color de las letras en blanco para que se lean sobre el fondo oscuro */
+    color: white; 
+    
+    /* Padding es el espacio INTERNO. Empuja el contenido hacia adentro para que no pegue en los bordes */
+    padding: 20px; 
+}
+
+/* CONTENIDO PRINCIPAL */
+#contenido-principal {
+    /* flex: 1 significa "Ocupá TODO el espacio restante que dejó la barra lateral" */
+    flex: 1; 
+    
+    /* Un color de fondo */
+    background-color: #f5f6fa; 
+    
+    /* Espacio interno para que el formulario no se pegue a los bordes */
+    padding: 40px; 
+}
+
+/* Hacemos que todas las secciones ocupen el 100% del ancho disponible */
+#contenido-principal section {
+    width: 100%;
+}
+
+/* 4. EL MENÚ DE NAVEGACIÓN */
+#barra-lateral nav {
+    /* Usamos flexbox de nuevo para ordenar los botones */
+    display: flex; 
+    
+    /* En lugar de fila (que es el defecto), los ponemos en columna (apilados) */
+    flex-direction: column; 
+    
+    /* Agrega un espacio de 15 píxeles entre cada botón para que no se choquen */
+    gap: 15px; 
+    
+    /* Lo empujamos un poco hacia abajo para separarlo del título "Mis Gastos" */
+    margin-top: 40px; 
+}
+
+/* 5. ESTILO DE LOS BOTONES DEL MENÚ */
+#barra-lateral button {
+    padding: 12px;
+    font-size: 16px;
+    background-color: transparent; /* Fondo invisible */
+    color: white; /* Texto blanco */
+    border: 1px solid white; /* Un borde blanquito fino */
+    border-radius: 5px; /* Bordes redondeados (¡muy moderno!) */
+    cursor: pointer; /* Que el mouse se convierta en una manito al pasar por encima */
+    text-align: left; /* Alineamos el texto a la izquierda */
+}
+
+/* EFECTO HOVER (Cuando pasas el mouse por encima) */
+#barra-lateral button:hover {
+    background-color: white;
+    color: #2c3e50;
+    transition: 0.3s; /* Una animación suave de 0.3 segundos */
+}
+
+/* ESTILOS DEL FORMULARIO */
+
+#formulario-gastos, #formulario-deudas {
+    display: flex; /* Ponemos los inputs uno al lado del otro */
+    gap: 10px; /* Separación entre cada cajita */
+    background-color: white; /* Fondo blanco para que resalte del gris del main */
+    padding: 20px; /* Espacio interno */
+    border-radius: 8px; /* Bordes redondeados suaves */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Una sombrita muy sutil para dar efecto 3D */
+    margin-bottom: 30px; /* Separación con la lista que va a ir abajo */
+}
+
+/* Le damos estilo a las cajitas donde el usuario escribe/elige */
+#formulario-gastos input,
+#formulario-gastos select,
+#formulario-deudas input,
+#formulario-deudas select {
+    padding: 10px;
+    border: 1px solid #ccc; /* Un borde gris clarito */
+    border-radius: 4px;
+    flex: 1; /* Esto es magia: hace que todas las cajitas se estiren y ocupen el mismo ancho */
+}
+
+/* El botón de enviar */
+#enviar-gastos, #enviar-deuda {
+    padding: 10px 20px;
+    background-color: #27ae60; /* Un verde vibrante (éxito) */
+    color: white; /* Texto blanco */
+    border: none; /* Sin bordes feos */
+    border-radius: 4px;
+    font-weight: bold; /* Letra negrita */
+    cursor: pointer;
+}
+
+/* ESTADO DESHABILITADO: Cuando tu lógica de JS dice "Falta llenar algo" */
+#enviar-gastos:disabled, #enviar-deuda:disabled {
+    background-color: #bdc3c7; /* Lo pintamos de gris para que parezca apagado */
+    cursor: not-allowed; /* El cursor cambia a un símbolo de "prohibido" */
+}
+
+
+/* ESTILOS DE LA LISTA DE GASTOS */
+#lista-de-gastos, #lista-de-deudas {
+    list-style: none; /* MATA los puntitos negros por defecto de las etiquetas <ul> */
+    padding: 0; /* Quita el margen izquierdo molesto de las listas */
+}
+
+/* Cada gasto individual (el <li>) */
+#lista-de-gastos li, #lista-de-deudas li {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombrita ligera */
+    
+    /* Magia flexbox para separar el texto del botón */
+    display: flex; 
+    justify-content: space-between; /* Empuja el texto a la izq y el botón a la der */
+    align-items: center; /* Los centra verticalmente */
+}
+
+/* El botón de Eliminar de cada gasto */
+#lista-de-gastos li button, #lista-de-deudas li button {
+    background-color: #e74c3c; /* Rojo alerta */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#lista-de-gastos li button:hover, #lista-de-deudas li button:hover {
+    background-color: #c0392b; /* Rojo más oscuro al pasar el mouse */
+}
+
+
+/* TOTAL GIGANTE */
+#contenido-principal p {
+    font-size: 24px; /* Letra bien grande */
+    font-weight: bold;
+    text-align: right; /* Lo empujamos contra el margen derecho */
+    margin-top: 20px;
+    color: #2c3e50; /* El mismo azul de tu barra lateral */
+}
+
+/* CONTENEDOR DEL GRÁFICO */
+#contenedor-grafico {
+    max-width: 400px;
+    margin-top: 30px;
+    margin-left: auto;  /* Estas dos líneas de margin */
+    margin-right: auto; /* centran el gráfico horizontalmente */
+}
+
+.oculto {
+    display: none !important;
+}
+
+/* ESTILOS PARA CELULARES (Pantallas de menos de 768px de ancho) */
+@media (max-width: 768px) {
+
+    /* El body ya no ordena uno al lado del otro, ahora ordena en columna */
+    body {
+        flex-direction: column; 
+    }
+
+    /* La barra lateral ya no tiene ancho fijo, ocupa el 100% y se adapta */
+    #barra-lateral {
+        width: 100%;
+        padding: 10px; /* Un poco menos de espacio arriba/abajo */
+    }
+
+    /* Cambiamos el diseño del menú para que los botones entren mejor */
+    #barra-lateral nav {
+        flex-direction: row; /* Botones uno al lado del otro */
+        justify-content: center; /* Centrados */
+        flex-wrap: wrap; /* Si no entran, que bajen */
+        gap: 8px; /* Menos espacio entre ellos */
+        margin-top: 15px;
+    }
+
+    /* Ajustamos los botones del menú para celular */
+    #barra-lateral button {
+        padding: 8px 12px;
+        font-size: 14px;
+        text-align: center;
+        flex: 1; /* Para que ocupen el mismo ancho si entran */
+        min-width: 100px; /* Pero que no se achiquen demasiado */
+    }
+
+    /* El contenido principal ocupa todo el ancho y ajusta espacios */
+    #contenido-principal {
+        padding: 15px; /* Menos padding lateral en celular */
+    }
+
+    /* El formulario de gastos/deudas tiene que apilarse verticalmente */
+    #formulario-gastos, #formulario-deudas {
+        flex-direction: column; /* Inputs uno abajo del otro */
+        gap: 5px;
+    }
+
+    /* Los inputs y selects ocupan todo el ancho disponible */
+    #formulario-gastos input,
+    #formulario-gastos select,
+    #formulario-deudas input,
+    #formulario-deudas select {
+        width: 100%;
+    }
+}

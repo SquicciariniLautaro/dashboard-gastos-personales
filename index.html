@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de gastos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body> <aside id="barra-lateral">
+        <h1>MIS GASTOS</h1>
+        <nav>
+            <button id="btn-inicio">Inicio</button>
+            <button id="btn-graficos">Gráficos</button>
+            <button id="btn-deudas">Deudas</button>
+        </nav>
+    </aside>
+    <main id="contenido-principal">
+    <section id="seccion-inicio">
+        <h2>GASTOS</h2>
+        <div>
+            <form action="" id="formulario-gastos" autocomplete="off">
+                <input type="text" id="mis-gastos" placeholder="Describa su gasto(ej: barberia, supermercado, etc...)">
+                <select name="" id="categoria-gasto">
+                    <option value="" disabled selected>Elija una categoria...</option>
+                    <option value="Impuestos">Impuestos</option>
+                    <option value="Supermercado">Supermercado</option>
+                    <option value="Belleza">Belleza</option>
+                    <option value="Comida">Restaurante y comida</option>
+                    <option value="Otros">Otros</option>
+                </select>
+                <input type="number" id="monto-del-gasto" placeholder="Ingrese el monto $...">
+                <button id="enviar-gastos" type="submit" disabled>Enviar</button>
+            </form>
+        </div>
+        
+        <div>
+            <ul id="lista-de-gastos">
+            </ul>
+        </div>
+        <p>Total de mis gastos: $<span id="total-gastos">0</span></p>
+    </section>
+    
+    <section id="seccion-graficos" class="oculto">
+        <h2>GASTOS DEL MES</h2>
+        <div id="contenedor-grafico">
+            <canvas id="mi-grafico"></canvas>
+        </div>
+    </section>
+
+    <section id="seccion-deudas" class="oculto">
+        <h2>DEUDAS</h2>
+        <div>
+            <form action="" id="formulario-deudas" autocomplete="off">
+                <input type="text" id="mis-deudas" placeholder="Describa su deuda">
+                <input type="text" id="deudor" placeholder="Describa a quien le debe(Persona/Entidad)">
+                <select name="" id="categoria-deuda">
+                    <option value="" disabled selected>Seleccione que tipo de deuda es...</option>
+                    <option value="cobrar">Dinero que me deben</option>
+                    <option value="pagar">Dinero que debo</option>
+                </select>
+                <input type="number" id="monto-deuda" placeholder="Ingrese el monto $...">
+                <button id="enviar-deuda" type="submit" disabled>Enviar</button>
+            </form>
+        </div>
+
+        <div>
+            <ul id="lista-de-deudas">
+            </ul>
+        </div>
+        <p>Total a cobrar: $<span id="total-cobrar">0</span></p>
+        <p>Total a pagar: $<span id="total-pagar">0</span></p>
+    </section>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
